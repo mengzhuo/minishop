@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+        <title>Binary Toys</title>
+        <link rel="stylesheet" href="/static/semantic.min.css" type="text/css" media="screen" title="no title" charset="utf-8">
+        <style type="text/css" media="screen">
+        body {background:#FFFAF0;}
+        #display {padding-top:1em;}
+        .direction {opacity:0.7;}
+        </style>
+    </head>
+    <body >
+        <div class="ui attached stackable menu">
+            <div class="ui container">
+              <div class="header item">Binary Toys</div>
+              <div class="ui dropdown item" tabindex="0">
+                  Catagories
+                <i class="dropdown icon"></i>
+                <div class="menu" tabindex="-1">
+                  <div class="item">Squishable</div>
+                </div>
+              </div>
+             <div class="right menu">
+                <div class="item">
+                  <div class="ui icon input">
+                    <input type="text" placeholder="Search...">
+                    <i class="search link icon"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+    
+    <div class="ui  three column grid container centered">
+        <!--Card-->
+        <div class="column">
+       <div class="ui special cards ">
+  <div class="card">
+    <div class="blurring dimmable image">
+      <div class="ui dimmer">
+        <div class="content">
+          <div class="center">
+            <div class="ui inverted button">Add Friend</div>
+          </div>
+        </div>
+      </div>
+      <img src="{{ index .p.Images 0}}">
+    </div>
+    <div class="content">
+        <a class="header">{{.p.Title}}</a>
+      <div class="meta">
+          <span class="date">ID:{{ .r.Id}}</span>
+      </div>
+    </div>
+    {{ if  .r.Claimed }}
+    <div class="ui bottom grey attached button">
+      <i class="checkmark icon"></i>
+        Already Claimed
+    </div>
+    {{ else }}
+    <div class="claim ui bottom blue attached button" data-action="claim" data-id="{{.p.Id}}-{{.r.Id}}">
+        <i class="add icon" ></i>
+        Claim it!
+    </div>
+    {{ end }} 
+  </div> 
+</div>
+<!-- card -->
+</div>
+
+    <script src="/static/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/static/semantic.min.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript" charset="utf-8">
+        $('.ui.dropdown').dropdown();
+        $.fn.api.settings.api = {
+            'claim' : '/v/{id}',
+        };
+        $(".claim").api({method:"POST",
+        onSuccess: function(response) {
+            location.reload();
+        },
+        });
+</script>
+    </body>
+</html>
