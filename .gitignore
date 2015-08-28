@@ -1,0 +1,5 @@
+asset/*
+src/github.com
+src/golang.org
+src/gopkg.in
+pkg
