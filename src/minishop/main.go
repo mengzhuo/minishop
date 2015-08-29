@@ -40,7 +40,11 @@ func DBInit(dbpath string) {
 	}
 	DB = SESSION.DB("minishop")
 	SERIES = DB.C("series")
+	SERIES.EnsureIndexKey("id")
+
 	PRODUCT = DB.C("product")
+	PRODUCT.EnsureIndexKey("on")
+	PRODUCT.EnsureIndexKey("id")
 }
 
 func AccountsInit() {
