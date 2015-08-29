@@ -25,6 +25,7 @@ type Product struct {
 	Title       string    `json:"title" form:"title"`
 	Price       string    `json:"price" form:"price"`
 	Images      []string  `json:"images" form:"images"`
+	Link        string    `json:"link" form:"link"`
 	Description string    `json:"description" form:"description"`
 	ExtraInfo   string    `json:"extra_info" form:"extra_info"`
 	On          bool      `json:"on" form:"on" binding:"required"`

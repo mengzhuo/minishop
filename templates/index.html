@@ -56,19 +56,19 @@
                   <a class="header">{{ .Title }} </a>
                   <span class="meta">${{.Price }}</span>
                 <div class="description">
-                    {{.Description}}
+                    {{ .Description}}
                 </div>
               </div>
              <div class="extra content">
               <div class="ui two buttons">
-                <button class="ui icon orange vertical animated button">
+                  <a href="{{ .Link }}" class="ui icon orange vertical animated button">
                       <div class="visible content">
                         <i class="shipping icon"></i>
                       </div>
                     <div class="hidden content">
                         ${{.Price}} /each
                     </div>
-                </button>
+                </a>
                 <div class="ui icon button details" data-content="{{ .ExtraInfo}}">
                         <i class="info circle icon"></i>
                 </div>
